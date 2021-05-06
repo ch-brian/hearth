@@ -1,0 +1,33 @@
+.searchbar {
+  padding: 40px;
+  position: fixed;
+  background-color: #fff;
+  top: 90px;
+  width: 100%;
+  z-index: 10;
+}
+
+.search_input {
+  width: 60%;
+  height: 30px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px;
+  border-style: solid;
+  border-color: #177fff;
+}
+
+.search_button {
+  width: 70px;
+  height: 30px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #177fff;
+  color: #fff;
+  border: none;
+}
+
+.search_button:hover {
+  background-color: #378ffb;
+  cursor: pointer;
+}

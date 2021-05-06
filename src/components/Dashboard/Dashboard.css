@@ -1,0 +1,11 @@
+.dashboard {
+  position: relative;
+  top: 87px;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.no_results {
+  position: relative;
+  top: 200px;
+}
