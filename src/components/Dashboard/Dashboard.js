@@ -47,7 +47,7 @@ const Dashboard = () => {
       {data !== undefined ? (
         <Listings listings={data.getMatchingListings} />
       ) : (
-        <span>No Search Results To Show</span>
+        <span className="no_results">No Search Results To Show</span>
       )}
     </div>
   );

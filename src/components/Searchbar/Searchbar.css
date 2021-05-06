@@ -1,5 +1,10 @@
 .searchbar {
   padding: 40px;
+  position: fixed;
+  background-color: #fff;
+  top: 90px;
+  width: 100%;
+  z-index: 10;
 }
 
 .search_input {

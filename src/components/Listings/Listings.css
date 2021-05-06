@@ -1,6 +1,8 @@
 .listings {
   width: 80%;
   margin: auto;
+  position: relative;
+  top: 120px;
 }
 
 .listings_table {
@@ -8,6 +10,13 @@
   width: 100%;
   overflow-x: auto;
   color: black;
+  background-color: #fff;
+  border-spacing: 0px;
+}
+
+.listings_table th {
+  position: sticky;
+  top: 220px;
   background-color: #fff;
 }
 
