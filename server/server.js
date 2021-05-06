@@ -11,7 +11,13 @@ const PORT = 8080;
 
 app.use(express.static(path.join(__dirname, '../build/')));
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  formatError: (err) => {
+    return err;
+  },
+});
 server.applyMiddleware({ app });
 
 app.get('/', (req, res) => {

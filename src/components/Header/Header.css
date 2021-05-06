@@ -1,0 +1,29 @@
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background-color: #fff;
+  border-style: none none solid none;
+  border-color: rgb(221, 221, 221);
+  border-width: 1px;
+}
+
+.header_logo {
+  text-align: left;
+  width: 310px;
+  margin: 20px;
+  display: table;
+}
+
+.header_logo img {
+  height: 40px;
+}
+
+.header_logo span {
+  display: table-cell;
+  font-weight: 800;
+  padding: 5px;
+  font-size: 30px;
+  vertical-align: middle;
+}
