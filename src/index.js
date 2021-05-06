@@ -7,7 +7,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const GRAPHQL_ENDPOINT = 'http://localhost:3000/graphql';
+const GRAPHQL_ENDPOINT =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000/graphql'
+    : 'http://localhost:8080/graphql';
 
 const httpLink = new HttpLink({
   uri: GRAPHQL_ENDPOINT,

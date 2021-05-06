@@ -12,8 +12,6 @@ export const resolvers = {
         .then((response) => {
           // Mutate the response so the keys come back without spaces to match the graphql spec. I'm ignoring the keys with special characters for now and omitting them from the type definition for a home listing. )
           return response.map((res) => {
-            console.log('MY RES: ', res.ADDRESS);
-
             const formattedResponse = {};
             const keys = Object.keys(res).map((each) =>
               // alternatively, we could use regex to replace spaces and special characters. We'd also need a conditional to parse the url key since it would still be a nonsense key even with the spaces and special characters removed. Maybe something like if(each.indexOf('URL) !== -1) return 'URL'
@@ -61,7 +59,6 @@ export const resolvers = {
               keys.forEach(
                 (key, idx) => (formattedResponse[key] = values[idx])
               );
-              console.log(formattedResponse);
               return formattedResponse;
             } else {
               return null;
