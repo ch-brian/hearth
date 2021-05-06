@@ -1,10 +1,10 @@
 import React from 'react';
-import { gql, useQuery } from '@apollo/client';
+import { gql, useLazyQuery } from '@apollo/client';
 import './Dashboard.css';
 
-const GET_LISTINGS = gql`
-  query getListings {
-    getListings {
+const GET_MATCHING_LISTINGS = gql`
+  query getMatchingListings($searchString: String!) {
+    getMatchingListings(searchString: $searchString) {
       SALETYPE
       SOLDDATE
       PROPERTYTYPE
@@ -32,9 +32,11 @@ const GET_LISTINGS = gql`
   }
 `;
 const Dashboard = () => {
-  const { data, loading, error } = useQuery(GET_LISTINGS);
+  const [getListings, { data, called, loading, error }] = useLazyQuery(
+    GET_MATCHING_LISTINGS
+  );
 
-  if (loading) return <span>loading listings...</span>;
+  if (called && loading) return <span>loading listings...</span>;
   if (error) return <span>ERROR GETTING LISTINGS!</span>;
 
   console.log('MYDATA: ', data);

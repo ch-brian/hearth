@@ -3,7 +3,8 @@ import { gql } from 'apollo-server-express';
 export const typeDefs = gql`
   type Query {
     hello: String!
-    getListings: [listing]
+    getAllListings: [listing]
+    getMatchingListings(searchString: String!): [listing]
   }
   type listing {
     SALETYPE: String
