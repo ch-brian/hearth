@@ -2,6 +2,17 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const pingServer = async () => {
+    await fetch('/test', {
+      method: 'GET',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +29,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <button onClick={pingServer}>TEST SERVER</button>
     </div>
   );
 }
