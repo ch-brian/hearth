@@ -1,0 +1,17 @@
+.listings {
+  width: 80%;
+  margin: auto;
+}
+
+.listings_table {
+  margin: auto;
+  width: 100%;
+  overflow-x: auto;
+  color: black;
+  background-color: #fff;
+}
+
+.listings_table tr:nth-child(even) {
+  background-color: #177fff;
+  color: #fff;
+}
