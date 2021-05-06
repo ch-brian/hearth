@@ -15,19 +15,39 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   formatError: (err) => {
+    // Don't give the specific database errors to the client.
+    if (err.message.startsWith('Database Error: ')) {
+      return new Error('Internal server error');
+    }
+    // Otherwise return the original error.  The error can also
+    // be manipulated in other ways, so long as it's returned.
     return err;
   },
 });
+
 server.applyMiddleware({ app });
 
-app.get('/', (req, res) => {
-  console.log('fired');
-  res.send('HELLO WORLD!');
+// test endpoint
+app.get('/test', (req, res) => {
+  console.log('test endpoint fired');
+  res.send('Test Endpoint');
 });
 
-app.get('/test', (req, res) => {
-  console.log('test get fired');
-  res.send('Test Endpoint');
+// 404 handler
+app.use('*', (req, res) => {
+  console.log('404 Error');
+  res.status(404).send('Page Not Found');
+});
+
+// generic error handler
+app.use((err, req, res, next) => {
+  const errorObj = {
+    log: 'Express error handler caught unknown error',
+    status: 400,
+    message: { err: 'error occurred' },
+  };
+  console.log(errorObj.log);
+  return res.status(errorObj.status).json(errorObj.message);
 });
 
 app.listen(PORT, () => {
