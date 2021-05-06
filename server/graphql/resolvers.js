@@ -38,10 +38,8 @@ export const resolvers = {
               res['STATE OR PROVINCE'].indexOf(searchString.trim()) !== -1 ||
               res['ZIP OR POSTAL CODE'].indexOf(searchString.trim()) !== -1
             ) {
-              console.log('IN IF');
               const formattedResponse = {};
               const keys = Object.keys(res).map((each) =>
-                // alternatively, we could use regex to replace spaces and special characters. We'd also need a conditional to parse the url key since it would still be a nonsense key even with the spaces and special characters removed. Maybe something like if(each.indexOf('URL) !== -1) return 'URL'
                 each.replace(' ', '')
               );
               const values = Object.values(res);

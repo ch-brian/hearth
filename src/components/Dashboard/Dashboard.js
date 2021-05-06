@@ -1,5 +1,8 @@
 import React from 'react';
 import { gql, useLazyQuery } from '@apollo/client';
+import Searchbar from '../Searchbar/Searchbar';
+import Listings from '../Listings/Listings';
+
 import './Dashboard.css';
 
 const GET_MATCHING_LISTINGS = gql`
@@ -35,14 +38,17 @@ const Dashboard = () => {
   const [getListings, { data, called, loading, error }] = useLazyQuery(
     GET_MATCHING_LISTINGS
   );
-
   if (called && loading) return <span>loading listings...</span>;
   if (error) return <span>ERROR GETTING LISTINGS!</span>;
 
-  console.log('MYDATA: ', data);
   return (
     <div className="dashboard">
-      <div>STUFF</div>
+      <Searchbar getListings={getListings} />
+      {data !== undefined ? (
+        <Listings listings={data.getMatchingListings} />
+      ) : (
+        <span>No Search Results To Show</span>
+      )}
     </div>
   );
 };
