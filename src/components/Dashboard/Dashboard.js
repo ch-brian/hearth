@@ -8,29 +8,12 @@ import './Dashboard.css';
 const GET_MATCHING_LISTINGS = gql`
   query getMatchingListings($searchString: String!) {
     getMatchingListings(searchString: $searchString) {
-      SALETYPE
-      SOLDDATE
       PROPERTYTYPE
       ADDRESS
       CITY
       STATEORPROVINCE
       ZIPORPOSTALCODE
       PRICE
-      BEDS
-      BATHS
-      LOCATION
-      SQUAREFEET
-      LOTSIZE
-      YEARBUILT
-      DAYSONMARKET
-      STATUS
-      NEXTOPENHOUSESTARTTIME
-      NEXTOPENHOUSEENDTIME
-      SOURCE
-      FAVORITE
-      INTERESTED
-      LATITUDE
-      LONGTITUDE
     }
   }
 `;

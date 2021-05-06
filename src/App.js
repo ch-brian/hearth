@@ -1,7 +1,8 @@
+import React, { Suspense, lazy } from 'react';
 import Header from './components/Header/Header';
-import Dashboard from './components/Dashboard/Dashboard';
-
 import './App.css';
+
+const Dashboard = lazy(() => import('./components/Dashboard/Dashboard'));
 
 function App() {
   // const pingServer = async () => {
@@ -18,7 +19,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Dashboard />
+      <Suspense fallback={<div>loading...</div>}>
+        <Dashboard />
+      </Suspense>
       {/* <button onClick={pingServer}>TEST SERVER</button> */}
     </div>
   );
