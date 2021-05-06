@@ -1,10 +1,18 @@
 import express from 'express';
+import { ApolloServer } from 'apollo-server-express';
 import path from 'path';
+
+import { typeDefs } from './graphql/typeDefs';
+import { resolvers } from './graphql/resolvers';
+
 const app = express();
 
 const PORT = 8080;
 
 app.use(express.static(path.join(__dirname, '../build/')));
+
+const server = new ApolloServer({ typeDefs, resolvers });
+server.applyMiddleware({ app });
 
 app.get('/', (req, res) => {
   console.log('fired');
