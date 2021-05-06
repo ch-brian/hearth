@@ -28,15 +28,21 @@ export const resolvers = {
     },
     getMatchingListings: async (parent, args, context, info) => {
       const { searchString } = args;
+      const formattedSearch = searchString.toLowerCase().trim();
       const myListings = await csv()
         .fromFile(path.join(__dirname, '../db/redfin.csv'))
         .then((response) => {
           return response.map((res) => {
             // find matching listings by address, state, and zip on the trimmed search string
             if (
-              res.ADDRESS.indexOf(searchString.trim()) !== -1 ||
-              res['STATE OR PROVINCE'].indexOf(searchString.trim()) !== -1 ||
-              res['ZIP OR POSTAL CODE'].indexOf(searchString.trim()) !== -1
+              res.ADDRESS.toLowerCase().indexOf(formattedSearch) !== -1 ||
+              res.CITY.toLowerCase().indexOf(formattedSearch) !== -1 ||
+              res['STATE OR PROVINCE']
+                .toLowerCase()
+                .indexOf(formattedSearch) !== -1 ||
+              res['ZIP OR POSTAL CODE']
+                .toLowerCase()
+                .indexOf(formattedSearch) !== -1
             ) {
               const formattedResponse = {};
               const keys = Object.keys(res).map((each) =>
